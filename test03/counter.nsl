@@ -1,0 +1,29 @@
+declare counter simulation{}
+
+declare countup{
+	input current[32];
+	output value[32];
+	func_in cntup(current) : value;
+}
+
+module countup{
+	func cntup {
+		wire res[32];
+		res = current+1;
+		return res;
+	}
+}
+
+module counter{
+	reg cnt[32] = 0;
+	wire cnt_w[32];
+	countup countup_ins;
+
+	cnt_w = cnt;
+	cnt := countup_ins.cntup(cnt_w);
+
+	_display("%d", cnt);
+
+	if(cnt >= 70) _finish("BYE");
+
+}

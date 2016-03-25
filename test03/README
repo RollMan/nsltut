@@ -1,0 +1,10 @@
+-目的
+NSLでLチカ
+カウンタと表示器をモジュールにわけずに実装
+
+-状態
+成功
+test02の原因はresetが常にかかっていたこと
+
+-memo
+nsl2vlでオプション-neg_res	Use negative edge resetを使うとよさそう

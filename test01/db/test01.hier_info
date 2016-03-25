@@ -1,0 +1,6 @@
+|test01
+pin_C <= inst.DB_MAX_OUTPUT_PORT_TYPE
+pin_A => inst.IN0
+pin_B => inst.IN1
+
+

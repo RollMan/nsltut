@@ -1,0 +1,7 @@
+vendor_name = ModelSim
+source_file = 1, /home/rollman/Documents/nsltuto/test01/test01.bdf
+source_file = 1, /home/rollman/Documents/nsltuto/test01/db/test01.cbx.xml
+design_name = test01
+instance = comp, \pin_C~output\, pin_C~output, test01, 1
+instance = comp, \pin_A~input\, pin_A~input, test01, 1
+instance = comp, \pin_B~input\, pin_B~input, test01, 1
