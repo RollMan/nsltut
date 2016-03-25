@@ -1,0 +1,35 @@
+declare counter01 {
+  output led;
+}
+
+declare countup{
+	output value[32];
+	func_in get_cnt() : value;
+}
+
+module counter01{
+	reg cnt[32] = 0;
+  reg led_stat = 0;
+	countup countup_ins;
+
+	cnt := countup_ins.get_cnt();
+  if(cnt == 32'hfffffff0){
+    led_stat := ~led_stat;
+  }
+  led = led_stat;
+}
+
+module countup{
+	reg cnter[32] = 0;
+
+  if(cnter >= 32'hffffffff){
+    cnter := 0;
+  }else{
+	  cnter++;
+  }
+	func get_cnt{
+		wire res[32];
+		res = cnter;
+		return res;
+	}
+}

@@ -1,5 +1,5 @@
 Flow report for ltika
-Thu Mar 24 18:19:29 2016
+Fri Mar 25 19:53:55 2016
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
@@ -40,7 +40,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Thu Mar 24 18:19:29 2016      ;
+; Flow Status                        ; Successful - Fri Mar 25 19:53:55 2016      ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
 ; Revision Name                      ; ltika                                      ;
 ; Top-level Entity Name              ; counter01                                  ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/24/2016 18:17:38 ;
+; Start date & time ; 03/25/2016 19:52:27 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; ltika               ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                     ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 0.145881105802000         ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 0.145890314700900         ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl               ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog) ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                        ; --            ; --          ; --             ;
@@ -93,12 +93,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:05     ; 1.0                     ; 536 MB              ; 00:00:04                           ;
-; Fitter                    ; 00:00:50     ; 1.0                     ; 910 MB              ; 00:00:48                           ;
-; Assembler                 ; 00:00:17     ; 1.0                     ; 556 MB              ; 00:00:13                           ;
-; TimeQuest Timing Analyzer ; 00:00:07     ; 1.0                     ; 592 MB              ; 00:00:05                           ;
-; EDA Netlist Writer        ; 00:00:04     ; 1.0                     ; 794 MB              ; 00:00:02                           ;
-; Total                     ; 00:01:23     ; --                      ; --                  ; 00:01:12                           ;
+; Analysis & Synthesis      ; 00:00:04     ; 1.0                     ; 536 MB              ; 00:00:03                           ;
+; Fitter                    ; 00:00:46     ; 1.0                     ; 911 MB              ; 00:00:42                           ;
+; Assembler                 ; 00:00:13     ; 1.0                     ; 541 MB              ; 00:00:12                           ;
+; TimeQuest Timing Analyzer ; 00:00:06     ; 1.0                     ; 596 MB              ; 00:00:05                           ;
+; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 794 MB              ; 00:00:02                           ;
+; Total                     ; 00:01:11     ; --                      ; --                  ; 00:01:04                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

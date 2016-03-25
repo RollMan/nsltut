@@ -1,6 +1,6 @@
 vendor_name = ModelSim
-source_file = 1, /home/rollman/Documents/nsltuto/rollman/counter01.v
-source_file = 1, /home/rollman/Documents/nsltuto/db/ltika.cbx.xml
+source_file = 1, /home/rollman/Documents/nsltuto/test02/counter01.v
+source_file = 1, /home/rollman/Documents/nsltuto/test02/db/ltika.cbx.xml
 design_name = counter01
 instance = comp, \countup_ins|cnter[31] , countup_ins|cnter[31], counter01, 1
 instance = comp, \countup_ins|cnter[30] , countup_ins|cnter[30], counter01, 1

@@ -16,7 +16,7 @@
 // PROGRAM "Quartus II 64-Bit"
 // VERSION "Version 13.0.0 Build 156 04/24/2013 SJ Web Edition"
 
-// DATE "03/24/2016 18:19:28"
+// DATE "03/25/2016 19:53:55"
 
 // 
 // Device: Altera EP4CE115F29C7 Package FBGA780
@@ -171,8 +171,8 @@ wire \Equal0~1_combout ;
 wire \Equal0~4_combout ;
 wire \led_stat~0_combout ;
 wire \led_stat~q ;
-wire [31:0] \countup_ins|cnter ;
 wire [31:0] cnt;
+wire [31:0] \countup_ins|cnter ;
 
 
 // Location: FF_X111_Y39_N31
