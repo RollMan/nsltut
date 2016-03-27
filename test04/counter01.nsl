@@ -1,0 +1,30 @@
+declare counter01 {
+  output led;
+}
+
+declare countup{
+	output value[32];
+}
+
+module counter01{
+	reg cnt[32] = 0;
+  reg led_stat = 0;
+	countup countup_ins;
+
+	cnt := countup_ins.value();
+  if(cnt == 32'hfffffff0){
+    led_stat := ~led_stat;
+  }
+  led = led_stat;
+}
+
+module countup{
+	reg cnter[32] = 0;
+
+  value = cnter;
+
+  any{
+    cnter >= 32'hfffffff : cnter := 0;
+    cnter <  32'hfffffff : cnter++;
+  }
+}

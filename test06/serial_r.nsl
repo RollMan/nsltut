@@ -1,0 +1,25 @@
+#define RX_CLK 650
+declare serial_r {
+  input RDX;
+  output RX_BUSY;
+  output RDX_V[8];
+}
+
+declare counter {
+  output f;
+}
+module counter {
+  reg cnt[32] = 0;
+  any{
+  }
+}
+
+module serial_r {
+  proc_name = receive();
+  if(RDX == 0){
+  }
+
+  proc receive {
+    
+  }
+}

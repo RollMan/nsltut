@@ -1,0 +1,9 @@
+-目的
+NSLでSerial Communication between PC and FPGA
+
+-状態
+
+-memo
+9600bps * 8 = 76800Hz
+1/76800 = 13usに一度数える
+1bit当たり 50MHz * 13us = 650回カウント
