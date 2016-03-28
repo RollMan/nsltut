@@ -7,7 +7,7 @@ declare top simulation{
 
 module top{
   reg data[8];
-  reg counter_reset = 1'b0;
+  //reg counter_reset = 1'b0;
   reg startf = 0;
   reg loop[4];
   reg DXT_r = 1;
@@ -15,11 +15,11 @@ module top{
   serial_r sr;
   counter counter_i;
 
-  counter_i.reset = counter_reset;
+  //counter_i.reset = counter_reset;
   sr.RDX = DXT_r;
 
   if(startf == 0){
-    data := 8'b01101101;
+    data := 8'b11110000;
     start();
     startf := 1;
   }
@@ -29,19 +29,21 @@ module top{
     while(loop < 3){
       loop++;
     }
-    counter_reset := 1'b1;
+    //counter_reset := 1'b1;
     DXT_r := 0;
     //while(counter_i.f < DATBIT_DELAY){
     //  countup();
     //}
     loop := 0;
-    counter_reset := 1'b0;
+    //counter_reset := 1'b0;
+    counter_i.reset();
     while(loop < 8){
-      counter_reset := 1'b1;
+      //counter_reset := 1'b1;
       counter_i.countup();
       if(counter_i.f == DATBIT_DELAY){
         DXT_r := data[loop];
-        counter_reset := 1'b0;
+        //counter_reset := 1'b0;
+        counter_i.reset();
         loop++;
       }
     }

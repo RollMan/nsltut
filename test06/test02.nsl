@@ -1,0 +1,22 @@
+declare test02 simulation{}
+
+module test02{
+  reg a[8];
+  reg loop[4] = 0;
+  reg f = 0;
+  func_self start();
+
+  if(f == 0){
+    a := 8'b00101111;
+    start();
+    f := 1;
+  }
+
+  function start seq{
+    for(loop:=0; loop<8; loop++){
+      _display("%d", a[loop]);
+    }
+    _finish();
+  }
+
+}
