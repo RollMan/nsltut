@@ -1,0 +1,52 @@
+#include "serial_r.nsl"
+#define RX_CLK 650
+#define STBIT_DELAY 3
+#define DATBIT_DELAY 8
+declare top simulation{
+}
+
+module top{
+  reg data[8];
+  reg counter_reset = 1'b0;
+  reg startf = 0;
+  reg loop[4];
+  reg DXT_r = 1;
+  proc_name start();
+  serial_r sr;
+  counter counter_i;
+
+  counter_i.reset = counter_reset;
+  sr.RDX = DXT_r;
+
+  if(startf == 0){
+    data := 8'b01101101;
+    start();
+    startf := 1;
+  }
+
+  proc start seq{
+    loop := 0;
+    while(loop < 3){
+      loop++;
+    }
+    counter_reset := 1'b1;
+    DXT_r := 0;
+    //while(counter_i.f < DATBIT_DELAY){
+    //  countup();
+    //}
+    loop := 0;
+    counter_reset := 1'b0;
+    while(loop < 8){
+      counter_reset := 1'b1;
+      counter_i.countup();
+      if(counter_i.f == DATBIT_DELAY){
+        DXT_r := data[loop];
+        counter_reset := 1'b0;
+        loop++;
+      }
+    }
+    _finish("FINISH");
+    finish();
+  }
+
+}

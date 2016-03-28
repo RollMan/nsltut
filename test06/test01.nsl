@@ -1,0 +1,26 @@
+declare test01 simulation{}
+
+module test01{
+  reg r[8]=0;
+  reg a[8];
+  reg b[1]=1'b0;
+  proc_name start();
+
+  if(r == 0){
+    start();
+    r := 10;
+  }
+
+  b := ~b;
+
+  proc start seq{
+    a := 0;
+    _display("%d", a);
+    a := 10;
+    _display("%d", a);
+    //a[0] := 1'b1;
+    a := a >> 1;
+    _display("%d", a);
+    finish();
+  }
+}

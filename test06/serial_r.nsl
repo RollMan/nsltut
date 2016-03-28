@@ -1,9 +1,8 @@
 #define RX_CLK 650
-#define STBIT_DEL 3
+#define STBIT_DELAY 3
+#define DATBIT_DElAY 8
 declare serial_r {
   input RDX;
-  output RX_BUSY;
-  output RDX_V[8];
 }
 
 declare counter {
@@ -16,7 +15,7 @@ module counter {
   reg f_r[16] = 0;
   if(~reset){
     cnt := 0;
-    f_r = 0;
+    f_r := 0;
   }
 
   f = f_r;
@@ -35,26 +34,42 @@ module counter {
 }
 
 module serial_r {
-  reg counter_reset = 1'b1;
+  reg counter_reset = 1'b0;
+  reg recieved[8];
+  reg loop[4];
   counter counter_i;
-  proc_name = receive();
+  proc_name receive();
 
   counter_i.reset = counter_reset;
 
   any{
     RDX == 0:{
+      //count 3(STBIT_DELAY) clocks (multipled 8 and baud rate) to ignore noise
+      counter_reset := 1'b1;
       counter_i.countup();
-      if(counter.f == STBIT_DEL){
+      if(counter_i.f == STBIT_DELAY){
         receive();
-        counter_reset = 0;
       }
     }
     RDX != 0:{
-      rdx_cnt := 0;
+      counter_reset := 1'b0;
     }
   }
 
-  proc receive {
-    
+  proc receive seq{
+    //for(loop := 0; loop < 4'd8; ;){
+    counter_reset := 1'b0;
+    loop := 0;
+    while(loop < 4'd8){
+      //wait 8(DATBIT_DELAY) clocks (multipled 8 and baud rate) to catche the middle of pulse
+      counter_reset := 1'b1;
+      counter_i.countup();
+      if(counter_i.f == DATBIT_DElAY){
+        loop++;
+        recieved := (recieved << 1) | {7'd0, RDX};
+        counter_reset := 1'b0;
+      }
+    }
+    finish();
   }
 }

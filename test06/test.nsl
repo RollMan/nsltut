@@ -1,0 +1,23 @@
+declare test simulation{}
+
+module test{
+  reg r[8]=0;
+  reg a[8];
+  func_self start();
+
+  if(r == 0){
+    start();
+    r := 10;
+  }
+
+  function start seq{
+    a := 0;
+    _display("%d", a);
+    a := 10;
+    _display("%d", a);
+    //a[0] := 1'b1;
+    a := a >> 1;
+    _display("%d", a);
+    _finish();
+  }
+}

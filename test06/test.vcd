@@ -1,0 +1,92 @@
+$date
+	Mon Mar 28 11:32:19 2016
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module tb $end
+$scope module test_instance $end
+$var wire 1 ! m_clock $end
+$var wire 1 " p_reset $end
+$var wire 1 # start $end
+$var wire 1 $ _net_0 $end
+$var reg 1 % _reg_1 $end
+$var reg 1 & _reg_2 $end
+$var reg 1 ' _reg_3 $end
+$var reg 1 ( _reg_4 $end
+$var reg 1 ) _reg_5 $end
+$var reg 1 * _reg_6 $end
+$var reg 1 + _reg_7 $end
+$var reg 8 , a [7:0] $end
+$var reg 8 - r [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 -
+bx ,
+0+
+0*
+0)
+0(
+0'
+0&
+0%
+1$
+1#
+1"
+0!
+$end
+#1
+b0 ,
+1!
+#2
+0!
+0"
+#3
+0#
+0$
+b1010 -
+1*
+1!
+#4
+0!
+#5
+0*
+1)
+1!
+#6
+0!
+#7
+1(
+0)
+b1010 ,
+1!
+#8
+0!
+#9
+0(
+1'
+1!
+#10
+0!
+#11
+1&
+0'
+b101 ,
+1!
+#12
+0!
+#13
+0&
+1%
+1!
+#14
+0!
+#15
+0%
+1!
