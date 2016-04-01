@@ -3,6 +3,7 @@
 #define DATBIT_DElAY 8
 declare serial_r {
   input RDX;
+  output LEDR[8];
 }
 
 declare counter {
@@ -45,6 +46,7 @@ module serial_r {
   proc_name receive();
 
   //counter_i.reset = counter_reset;
+  LEDR = recieved;
 
   if(receiving == 0){
   any{
@@ -75,7 +77,8 @@ module serial_r {
       counter_i.countup();
       if(counter_i.f == DATBIT_DElAY){
         loop++;
-        recieved := (recieved << 1) | {7'd0, RDX};
+        //recieved := (recieved << 1) | {7'd0, RDX};
+        recieved := {RDX, recieved[7:1]};
         //counter_reset := 1'b0;
         counter_i.reset();
       }

@@ -41,11 +41,16 @@ module top{
       //counter_reset := 1'b1;
       counter_i.countup();
       if(counter_i.f == DATBIT_DELAY){
-        DXT_r := data[loop];
+        DXT_r := data[loop+1];
+        _display("loop = %d, DXT_r = %d", loop, DXT_r);
         //counter_reset := 1'b0;
         counter_i.reset();
         loop++;
       }
+    }
+    loop := 0;
+    while(loop < 3){
+      loop++;
     }
     _finish("FINISH");
     finish();

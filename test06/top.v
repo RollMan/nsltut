@@ -3,7 +3,7 @@
 `default_nettype none
 
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Mon Mar 28 18:23:38 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Mar 30 10:51:04 2016
  Licensed to :EVALUATION USER
 */
 /*
@@ -125,22 +125,24 @@ if ((((countup&_net_1)|reset)==1'b1) ||
 // synopsys translate_on
 endmodule
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Mon Mar 28 18:23:38 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Mar 30 10:51:04 2016
  Licensed to :EVALUATION USER
 */
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Mon Mar 28 18:23:38 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Mar 30 10:51:04 2016
  Licensed to :EVALUATION USER
 */
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
 */
 
-module serial_r ( p_reset , m_clock , RDX );
+module serial_r ( p_reset , m_clock , RDX , LEDR );
   input p_reset, m_clock;
   wire p_reset, m_clock;
   input RDX;
   wire RDX;
+  output [7:0] LEDR;
+  wire [7:0] LEDR;
   reg [7:0] recieved;
   reg [3:0] loop;
   reg receiving;
@@ -180,8 +182,8 @@ always @(posedge _counter_i_countup)
  begin
 $display("Warning: control hazard(serial_r:_counter_i_countup) at %d",$time);
  end
-#1 if (((((_reg_11&receive)&(~_net_16)))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_11&receive)&(~_net_16)) || 1'b1) line 75 at %d\n",$time);
-#1 if ((((_net_4&_net_6))===1'bx) || (1'b1)===1'bx) $display("hazard ((_net_4&_net_6) || 1'b1) line 54 at %d\n",$time);
+#1 if (((((_reg_11&receive)&(~_net_16)))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_11&receive)&(~_net_16)) || 1'b1) line 77 at %d\n",$time);
+#1 if ((((_net_4&_net_6))===1'bx) || (1'b1)===1'bx) $display("hazard ((_net_4&_net_6) || 1'b1) line 56 at %d\n",$time);
  end
 
 // synthesis translate_on
@@ -197,9 +199,9 @@ always @(posedge _counter_i_reset)
  begin
 $display("Warning: control hazard(serial_r:_counter_i_reset) at %d",$time);
  end
-#1 if ((((receive&_reg_13))===1'bx) || (1'b1)===1'bx) $display("hazard ((receive&_reg_13) || 1'b1) line 70 at %d\n",$time);
-#1 if (((((_reg_10&receive)&_net_15))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_10&receive)&_net_15) || 1'b1) line 80 at %d\n",$time);
-#1 if ((((_net_4&_net_5))===1'bx) || (1'b1)===1'bx) $display("hazard ((_net_4&_net_5) || 1'b1) line 62 at %d\n",$time);
+#1 if ((((receive&_reg_13))===1'bx) || (1'b1)===1'bx) $display("hazard ((receive&_reg_13) || 1'b1) line 72 at %d\n",$time);
+#1 if (((((_reg_10&receive)&_net_15))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_10&receive)&_net_15) || 1'b1) line 83 at %d\n",$time);
+#1 if ((((_net_4&_net_5))===1'bx) || (1'b1)===1'bx) $display("hazard ((_net_4&_net_5) || 1'b1) line 64 at %d\n",$time);
  end
 
 // synthesis translate_on
@@ -218,7 +220,7 @@ always @(posedge _proc_receive_set)
  begin
 $display("Warning: control hazard(serial_r:_proc_receive_set) at %d",$time);
  end
-#1 if (((((_net_4&_net_6)&_net_7))===1'bx) || (1'b1)===1'bx) $display("hazard (((_net_4&_net_6)&_net_7) || 1'b1) line 57 at %d\n",$time);
+#1 if (((((_net_4&_net_6)&_net_7))===1'bx) || (1'b1)===1'bx) $display("hazard (((_net_4&_net_6)&_net_7) || 1'b1) line 59 at %d\n",$time);
  end
 
 // synthesis translate_on
@@ -233,7 +235,7 @@ always @(posedge _proc_receive_reset)
  begin
 $display("Warning: control hazard(serial_r:_proc_receive_reset) at %d",$time);
  end
-#1 if ((((_reg_8&receive))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_8&receive) || 1'b1) line 84 at %d\n",$time);
+#1 if ((((_reg_8&receive))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_8&receive) || 1'b1) line 87 at %d\n",$time);
  end
 
 // synthesis translate_on
@@ -301,7 +303,7 @@ always @(posedge _reg_10_goto)
  begin
 $display("Warning: control hazard(serial_r:_reg_10_goto) at %d",$time);
  end
-#1 if (((((_reg_10&receive)&_net_14))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_10&receive)&_net_14) || 1'b1) line 82 at %d\n",$time);
+#1 if (((((_reg_10&receive)&_net_14))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_10&receive)&_net_14) || 1'b1) line 85 at %d\n",$time);
  end
 
 // synthesis translate_on
@@ -316,7 +318,7 @@ always @(posedge _reg_11_goin)
  begin
 $display("Warning: control hazard(serial_r:_reg_11_goin) at %d",$time);
  end
-#1 if (((((_reg_10&receive)&_net_14))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_10&receive)&_net_14) || 1'b1) line 82 at %d\n",$time);
+#1 if (((((_reg_10&receive)&_net_14))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_10&receive)&_net_14) || 1'b1) line 85 at %d\n",$time);
  end
 
 // synthesis translate_on
@@ -357,7 +359,7 @@ always @(posedge _reg_11_goto)
  begin
 $display("Warning: control hazard(serial_r:_reg_11_goto) at %d",$time);
  end
-#1 if (((((_reg_11&receive)&_net_16))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_11&receive)&_net_16) || 1'b1) line 82 at %d\n",$time);
+#1 if (((((_reg_11&receive)&_net_16))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_11&receive)&_net_16) || 1'b1) line 85 at %d\n",$time);
  end
 
 // synthesis translate_on
@@ -372,18 +374,19 @@ always @(posedge _reg_9_goin)
  begin
 $display("Warning: control hazard(serial_r:_reg_9_goin) at %d",$time);
  end
-#1 if (((((_reg_11&receive)&_net_16))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_11&receive)&_net_16) || 1'b1) line 82 at %d\n",$time);
+#1 if (((((_reg_11&receive)&_net_16))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_11&receive)&_net_16) || 1'b1) line 85 at %d\n",$time);
  end
 
 // synthesis translate_on
 // synopsys translate_on
    assign  _reg_9_goin = ((_reg_11&receive)&_net_16);
+   assign  LEDR = recieved;
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      recieved <= 8'b00000000;
 else if (((_reg_10&receive)&_net_15))
-      recieved <= ((recieved<<1)|({7'b0000000,RDX}));
+      recieved <= ({RDX,(recieved[7:1])});
 end
 always @(posedge m_clock)
   begin
@@ -504,11 +507,11 @@ else if (((_proc_receive_set|_proc_receive_reset)|_reg_13))
 end
 endmodule
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Mon Mar 28 18:23:38 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Mar 30 10:51:04 2016
  Licensed to :EVALUATION USER
 */
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Mon Mar 28 18:23:38 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Mar 30 10:51:04 2016
  Licensed to :EVALUATION USER
 */
 
@@ -529,6 +532,7 @@ module top ( p_reset , m_clock );
   wire _proc_start_set;
   wire _proc_start_reset;
   wire _sr_RDX;
+  wire [7:0] _sr_LEDR;
   wire _sr_p_reset;
   wire _sr_m_clock;
   wire [15:0] _counter_i_f;
@@ -536,9 +540,7 @@ module top ( p_reset , m_clock );
   wire _counter_i_reset;
   wire _counter_i_p_reset;
   wire _counter_i_m_clock;
-  wire _net_21;
-  reg _reg_22;
-  reg _reg_23;
+  wire _net_23;
   reg _reg_24;
   reg _reg_25;
   reg _reg_26;
@@ -546,20 +548,29 @@ module top ( p_reset , m_clock );
   reg _reg_28;
   reg _reg_29;
   reg _reg_30;
-  wire _net_33;
-  wire _reg_24_goto;
-  wire _reg_25_goin;
-  wire _net_34;
-  wire _net_35;
-  wire _reg_25_goto;
-  wire _reg_23_goin;
-  wire _net_36;
-  wire _reg_29_goto;
-  wire _reg_28_goin;
+  reg _reg_31;
+  reg _reg_32;
+  reg _reg_33;
+  reg _reg_34;
   wire _net_37;
+  wire _reg_26_goto;
+  wire _reg_25_goin;
+  wire _net_38;
+  wire _reg_26_goin;
+  wire _net_39;
+  wire _reg_28_goto;
   wire _reg_29_goin;
+  wire _net_40;
+  wire _net_42;
+  wire _reg_29_goto;
+  wire _reg_27_goin;
+  wire _net_43;
+  wire _reg_33_goto;
+  wire _reg_32_goin;
+  wire _net_44;
+  wire _reg_33_goin;
 counter counter_i (.m_clock(m_clock), .p_reset(p_reset), .reset(_counter_i_reset), .countup(_counter_i_countup), .f(_counter_i_f));
-serial_r sr (.m_clock(m_clock), .p_reset(p_reset), .RDX(_sr_RDX));
+serial_r sr (.m_clock(m_clock), .p_reset(p_reset), .LEDR(_sr_LEDR), .RDX(_sr_RDX));
 
 always @(posedge _proc_start_set)
   begin
@@ -567,18 +578,18 @@ always @(posedge _proc_start_set)
  begin
 $display("Warning: control hazard(top:_proc_start_set) at %d",$time);
  end
-#1 if (((_net_21)===1'bx) || (1'b1)===1'bx) $display("hazard (_net_21 || 1'b1) line 23 at %d\n",$time);
+#1 if (((_net_23)===1'bx) || (1'b1)===1'bx) $display("hazard (_net_23 || 1'b1) line 23 at %d\n",$time);
  end
-   assign  _proc_start_set = _net_21;
+   assign  _proc_start_set = _net_23;
 always @(posedge _proc_start_reset)
   begin
 #1 if (_proc_start_reset===1'bx)
  begin
 $display("Warning: control hazard(top:_proc_start_reset) at %d",$time);
  end
-#1 if ((((_reg_22&start))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_22&start) || 1'b1) line 51 at %d\n",$time);
+#1 if ((((_reg_24&start))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_24&start) || 1'b1) line 56 at %d\n",$time);
  end
-   assign  _proc_start_reset = (_reg_22&start);
+   assign  _proc_start_reset = (_reg_24&start);
    assign  _sr_RDX = DXT_r;
    assign  _sr_p_reset = p_reset;
    assign  _sr_m_clock = m_clock;
@@ -588,136 +599,178 @@ always @(posedge _counter_i_countup)
  begin
 $display("Warning: control hazard(top:_counter_i_countup) at %d",$time);
  end
-#1 if (((((_reg_25&start)&(~_net_35)))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_25&start)&(~_net_35)) || 1'b1) line 42 at %d\n",$time);
+#1 if (((((_reg_29&start)&(~_net_42)))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_29&start)&(~_net_42)) || 1'b1) line 42 at %d\n",$time);
  end
-   assign  _counter_i_countup = ((_reg_25&start)&(~_net_35));
+   assign  _counter_i_countup = ((_reg_29&start)&(~_net_42));
 always @(posedge _counter_i_reset)
   begin
 #1 if (_counter_i_reset===1'bx)
  begin
 $display("Warning: control hazard(top:_counter_i_reset) at %d",$time);
  end
-#1 if ((((_reg_26&start))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_26&start) || 1'b1) line 39 at %d\n",$time);
-#1 if (((((_reg_24&start)&_net_34))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_24&start)&_net_34) || 1'b1) line 46 at %d\n",$time);
+#1 if ((((_reg_30&start))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_30&start) || 1'b1) line 39 at %d\n",$time);
+#1 if (((((_reg_28&start)&_net_40))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_28&start)&_net_40) || 1'b1) line 47 at %d\n",$time);
  end
-   assign  _counter_i_reset = (_reg_26&start)|
-    ((_reg_24&start)&_net_34);
+   assign  _counter_i_reset = (_reg_30&start)|
+    ((_reg_28&start)&_net_40);
    assign  _counter_i_p_reset = p_reset;
    assign  _counter_i_m_clock = m_clock;
-   assign  _net_21 = (startf==1'b0);
+   assign  _net_23 = (startf==1'b0);
 always @(posedge m_clock)
   begin
-    if((_reg_23&start))
+    if((_reg_25&start))
     begin
     $display("FINISH");
     end
   end
 always @(posedge m_clock)
   begin
-    if((_reg_23&start))
+    if((_reg_25&start))
     begin
     $finish;
     end
   end
-   assign  _net_33 = ((_reg_24&start))? (((_reg_24&start))?(loop < 4'b1000):1'b0):1'bx;
-always @(posedge _reg_24_goto)
+   assign  _net_37 = ((_reg_26&start))? (((_reg_26&start))?(~(loop < 4'b0011)):1'b0):1'bx;
+always @(posedge _reg_26_goto)
   begin
-#1 if (_reg_24_goto===1'bx)
+#1 if (_reg_26_goto===1'bx)
  begin
-$display("Warning: control hazard(top:_reg_24_goto) at %d",$time);
+$display("Warning: control hazard(top:_reg_26_goto) at %d",$time);
  end
-#1 if (((((_reg_24&start)&_net_33))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_24&start)&_net_33) || 1'b1) line 49 at %d\n",$time);
+#1 if ((((((_reg_26&start)&(~_net_37))&_net_38))===1'bx) || (1'b1)===1'bx) $display("hazard ((((_reg_26&start)&(~_net_37))&_net_38) || 1'b1) line 54 at %d\n",$time);
+#1 if (((((_reg_26&start)&_net_37))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_26&start)&_net_37) || 1'b1) line 54 at %d\n",$time);
  end
-   assign  _reg_24_goto = ((_reg_24&start)&_net_33);
+   assign  _reg_26_goto = (((_reg_26&start)&(~_net_37))&_net_38)|
+    ((_reg_26&start)&_net_37);
 always @(posedge _reg_25_goin)
   begin
 #1 if (_reg_25_goin===1'bx)
  begin
 $display("Warning: control hazard(top:_reg_25_goin) at %d",$time);
  end
-#1 if (((((_reg_24&start)&_net_33))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_24&start)&_net_33) || 1'b1) line 49 at %d\n",$time);
+#1 if (((((_reg_26&start)&_net_37))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_26&start)&_net_37) || 1'b1) line 54 at %d\n",$time);
  end
-   assign  _reg_25_goin = ((_reg_24&start)&_net_33);
-   assign  _net_34 = ((_reg_24&start))? (((_reg_24&start))?(_counter_i_f==16'b0000000000001000):1'b0):1'bx;
-   assign  _net_35 = ((_reg_25&start))? (((_reg_25&start))?(~(loop < 4'b1000)):1'b0):1'bx;
-always @(posedge _reg_25_goto)
+   assign  _reg_25_goin = ((_reg_26&start)&_net_37);
+   assign  _net_38 = (((_reg_26&start)&(~_net_37)))? ((((_reg_26&start)&(~_net_37)))?(loop < 4'b0011):1'b0):1'bx;
+always @(posedge _reg_26_goin)
   begin
-#1 if (_reg_25_goto===1'bx)
+#1 if (_reg_26_goin===1'bx)
  begin
-$display("Warning: control hazard(top:_reg_25_goto) at %d",$time);
+$display("Warning: control hazard(top:_reg_26_goin) at %d",$time);
  end
-#1 if (((((_reg_25&start)&_net_35))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_25&start)&_net_35) || 1'b1) line 49 at %d\n",$time);
+#1 if ((((((_reg_26&start)&(~_net_37))&_net_38))===1'bx) || (1'b1)===1'bx) $display("hazard ((((_reg_26&start)&(~_net_37))&_net_38) || 1'b1) line 54 at %d\n",$time);
  end
-   assign  _reg_25_goto = ((_reg_25&start)&_net_35);
-always @(posedge _reg_23_goin)
+   assign  _reg_26_goin = (((_reg_26&start)&(~_net_37))&_net_38);
+   assign  _net_39 = ((_reg_28&start))? (((_reg_28&start))?(loop < 4'b1000):1'b0):1'bx;
+always @(posedge _reg_28_goto)
   begin
-#1 if (_reg_23_goin===1'bx)
+#1 if (_reg_28_goto===1'bx)
  begin
-$display("Warning: control hazard(top:_reg_23_goin) at %d",$time);
+$display("Warning: control hazard(top:_reg_28_goto) at %d",$time);
  end
-#1 if (((((_reg_25&start)&_net_35))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_25&start)&_net_35) || 1'b1) line 49 at %d\n",$time);
+#1 if (((((_reg_28&start)&_net_39))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_28&start)&_net_39) || 1'b1) line 50 at %d\n",$time);
  end
-   assign  _reg_23_goin = ((_reg_25&start)&_net_35);
-   assign  _net_36 = ((_reg_29&start))? (((_reg_29&start))?(~(loop < 4'b0011)):1'b0):1'bx;
-always @(posedge _reg_29_goto)
-  begin
-#1 if (_reg_29_goto===1'bx)
- begin
-$display("Warning: control hazard(top:_reg_29_goto) at %d",$time);
- end
-#1 if ((((((_reg_29&start)&(~_net_36))&_net_37))===1'bx) || (1'b1)===1'bx) $display("hazard ((((_reg_29&start)&(~_net_36))&_net_37) || 1'b1) line 31 at %d\n",$time);
-#1 if (((((_reg_29&start)&_net_36))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_29&start)&_net_36) || 1'b1) line 31 at %d\n",$time);
- end
-   assign  _reg_29_goto = (((_reg_29&start)&(~_net_36))&_net_37)|
-    ((_reg_29&start)&_net_36);
-always @(posedge _reg_28_goin)
-  begin
-#1 if (_reg_28_goin===1'bx)
- begin
-$display("Warning: control hazard(top:_reg_28_goin) at %d",$time);
- end
-#1 if (((((_reg_29&start)&_net_36))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_29&start)&_net_36) || 1'b1) line 31 at %d\n",$time);
- end
-   assign  _reg_28_goin = ((_reg_29&start)&_net_36);
-   assign  _net_37 = (((_reg_29&start)&(~_net_36)))? ((((_reg_29&start)&(~_net_36)))?(loop < 4'b0011):1'b0):1'bx;
+   assign  _reg_28_goto = ((_reg_28&start)&_net_39);
 always @(posedge _reg_29_goin)
   begin
 #1 if (_reg_29_goin===1'bx)
  begin
 $display("Warning: control hazard(top:_reg_29_goin) at %d",$time);
  end
-#1 if ((((((_reg_29&start)&(~_net_36))&_net_37))===1'bx) || (1'b1)===1'bx) $display("hazard ((((_reg_29&start)&(~_net_36))&_net_37) || 1'b1) line 31 at %d\n",$time);
+#1 if (((((_reg_28&start)&_net_39))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_28&start)&_net_39) || 1'b1) line 50 at %d\n",$time);
  end
-   assign  _reg_29_goin = (((_reg_29&start)&(~_net_36))&_net_37);
+   assign  _reg_29_goin = ((_reg_28&start)&_net_39);
+   assign  _net_40 = ((_reg_28&start))? (((_reg_28&start))?(_counter_i_f==16'b0000000000001000):1'b0):1'bx;
 always @(posedge m_clock)
   begin
-if (_net_21)
+    if(((_reg_28&start)&_net_40))
+    begin
+    $display("loop = %d, DXT_r = %d",loop,DXT_r);
+    end
+  end
+   assign  _net_42 = ((_reg_29&start))? (((_reg_29&start))?(~(loop < 4'b1000)):1'b0):1'bx;
+always @(posedge _reg_29_goto)
+  begin
+#1 if (_reg_29_goto===1'bx)
+ begin
+$display("Warning: control hazard(top:_reg_29_goto) at %d",$time);
+ end
+#1 if (((((_reg_29&start)&_net_42))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_29&start)&_net_42) || 1'b1) line 50 at %d\n",$time);
+ end
+   assign  _reg_29_goto = ((_reg_29&start)&_net_42);
+always @(posedge _reg_27_goin)
+  begin
+#1 if (_reg_27_goin===1'bx)
+ begin
+$display("Warning: control hazard(top:_reg_27_goin) at %d",$time);
+ end
+#1 if (((((_reg_29&start)&_net_42))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_29&start)&_net_42) || 1'b1) line 50 at %d\n",$time);
+ end
+   assign  _reg_27_goin = ((_reg_29&start)&_net_42);
+   assign  _net_43 = ((_reg_33&start))? (((_reg_33&start))?(~(loop < 4'b0011)):1'b0):1'bx;
+always @(posedge _reg_33_goto)
+  begin
+#1 if (_reg_33_goto===1'bx)
+ begin
+$display("Warning: control hazard(top:_reg_33_goto) at %d",$time);
+ end
+#1 if ((((((_reg_33&start)&(~_net_43))&_net_44))===1'bx) || (1'b1)===1'bx) $display("hazard ((((_reg_33&start)&(~_net_43))&_net_44) || 1'b1) line 31 at %d\n",$time);
+#1 if (((((_reg_33&start)&_net_43))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_33&start)&_net_43) || 1'b1) line 31 at %d\n",$time);
+ end
+   assign  _reg_33_goto = (((_reg_33&start)&(~_net_43))&_net_44)|
+    ((_reg_33&start)&_net_43);
+always @(posedge _reg_32_goin)
+  begin
+#1 if (_reg_32_goin===1'bx)
+ begin
+$display("Warning: control hazard(top:_reg_32_goin) at %d",$time);
+ end
+#1 if (((((_reg_33&start)&_net_43))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_33&start)&_net_43) || 1'b1) line 31 at %d\n",$time);
+ end
+   assign  _reg_32_goin = ((_reg_33&start)&_net_43);
+   assign  _net_44 = (((_reg_33&start)&(~_net_43)))? ((((_reg_33&start)&(~_net_43)))?(loop < 4'b0011):1'b0):1'bx;
+always @(posedge _reg_33_goin)
+  begin
+#1 if (_reg_33_goin===1'bx)
+ begin
+$display("Warning: control hazard(top:_reg_33_goin) at %d",$time);
+ end
+#1 if ((((((_reg_33&start)&(~_net_43))&_net_44))===1'bx) || (1'b1)===1'bx) $display("hazard ((((_reg_33&start)&(~_net_43))&_net_44) || 1'b1) line 31 at %d\n",$time);
+ end
+   assign  _reg_33_goin = (((_reg_33&start)&(~_net_43))&_net_44);
+always @(posedge m_clock)
+  begin
+if (_net_23)
       data <= 8'b11110000;
 end
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      startf <= 1'b0;
-else if (_net_21)
+else if (_net_23)
       startf <= 1'b1;
 end
 always @(posedge m_clock)
   begin
-if (((((start&_reg_30)&((_reg_29&start)&(~_net_36)))|(((start&_reg_30)|((_reg_29&start)&(~_net_36)))&(_reg_27&start)))|((((start&_reg_30)|((_reg_29&start)&(~_net_36)))|(_reg_27&start))&((_reg_24&start)&_net_34))))   loop <= 4'bx; 
-  else if ((start&_reg_30))
+if (((((((start&_reg_34)&((_reg_33&start)&(~_net_43)))|(((start&_reg_34)|((_reg_33&start)&(~_net_43)))&(_reg_31&start)))|((((start&_reg_34)|((_reg_33&start)&(~_net_43)))|(_reg_31&start))&((_reg_28&start)&_net_40)))|(((((start&_reg_34)|((_reg_33&start)&(~_net_43)))|(_reg_31&start))|((_reg_28&start)&_net_40))&(_reg_27&start)))|((((((start&_reg_34)|((_reg_33&start)&(~_net_43)))|(_reg_31&start))|((_reg_28&start)&_net_40))|(_reg_27&start))&((_reg_26&start)&(~_net_37)))))   loop <= 4'bx; 
+  else if ((start&_reg_34))
       loop <= 4'b0000;
-else if (((_reg_29&start)&(~_net_36)))
+else if (((_reg_33&start)&(~_net_43)))
+      loop <= (loop+4'b0001);
+else if ((_reg_31&start))
+      loop <= 4'b0000;
+else if (((_reg_28&start)&_net_40))
       loop <= (loop+4'b0001);
 else if ((_reg_27&start))
       loop <= 4'b0000;
-else if (((_reg_24&start)&_net_34))
+else if (((_reg_26&start)&(~_net_37)))
       loop <= (loop+4'b0001);
 end
 always @(posedge m_clock)
   begin
-if ((((((start&_reg_30)|((_reg_29&start)&(~_net_36)))|(_reg_27&start))|((_reg_24&start)&_net_34))==1'b1) ||
- (((((start&_reg_30)|((_reg_29&start)&(~_net_36)))|(_reg_27&start))|((_reg_24&start)&_net_34))==1'b0) ) begin
- if (((((start&_reg_30)&((_reg_29&start)&(~_net_36)))|(((start&_reg_30)|((_reg_29&start)&(~_net_36)))&(_reg_27&start)))|((((start&_reg_30)|((_reg_29&start)&(~_net_36)))|(_reg_27&start))&((_reg_24&start)&_net_34))))
+if ((((((((start&_reg_34)|((_reg_33&start)&(~_net_43)))|(_reg_31&start))|((_reg_28&start)&_net_40))|(_reg_27&start))|((_reg_26&start)&(~_net_37)))==1'b1) ||
+ (((((((start&_reg_34)|((_reg_33&start)&(~_net_43)))|(_reg_31&start))|((_reg_28&start)&_net_40))|(_reg_27&start))|((_reg_26&start)&(~_net_37)))==1'b0) ) begin
+ if (((((((start&_reg_34)&((_reg_33&start)&(~_net_43)))|(((start&_reg_34)|((_reg_33&start)&(~_net_43)))&(_reg_31&start)))|((((start&_reg_34)|((_reg_33&start)&(~_net_43)))|(_reg_31&start))&((_reg_28&start)&_net_40)))|(((((start&_reg_34)|((_reg_33&start)&(~_net_43)))|(_reg_31&start))|((_reg_28&start)&_net_40))&(_reg_27&start)))|((((((start&_reg_34)|((_reg_33&start)&(~_net_43)))|(_reg_31&start))|((_reg_28&start)&_net_40))|(_reg_27&start))&((_reg_26&start)&(~_net_37)))))
  begin $display("Warning: assign collision(top:loop) at %d",$time);
 
   end
@@ -730,17 +783,17 @@ always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      DXT_r <= 1'b1;
-else if (((_reg_28&start)&((_reg_24&start)&_net_34)))   DXT_r <= 1'bx; 
-  else if ((_reg_28&start))
+else if (((_reg_32&start)&((_reg_28&start)&_net_40)))   DXT_r <= 1'bx; 
+  else if ((_reg_32&start))
       DXT_r <= 1'b0;
-else if (((_reg_24&start)&_net_34))
-      DXT_r <= (data[loop]);
+else if (((_reg_28&start)&_net_40))
+      DXT_r <= (data[(loop+4'b0001)]);
 end
 always @(posedge m_clock)
   begin
-if ((((_reg_28&start)|((_reg_24&start)&_net_34))==1'b1) ||
- (((_reg_28&start)|((_reg_24&start)&_net_34))==1'b0) ) begin
- if (((_reg_28&start)&((_reg_24&start)&_net_34)))
+if ((((_reg_32&start)|((_reg_28&start)&_net_40))==1'b1) ||
+ (((_reg_32&start)|((_reg_28&start)&_net_40))==1'b0) ) begin
+ if (((_reg_32&start)&((_reg_28&start)&_net_40)))
  begin $display("Warning: assign collision(top:DXT_r) at %d",$time);
 
   end
@@ -759,76 +812,90 @@ end
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
-     _reg_22 <= 1'b0;
-else if ((_proc_start_reset|(_reg_22|_reg_23)))
-      _reg_22 <= (_reg_23&(~_proc_start_reset));
-end
-always @(posedge m_clock or posedge p_reset)
-  begin
-if (p_reset)
-     _reg_23 <= 1'b0;
-else if ((_proc_start_reset|(((_reg_25&start)&_net_35)|(_reg_23|_reg_24))))
-      _reg_23 <= ((((_reg_25&start)&_net_35)|(_reg_24&(~_reg_24_goto)))&(~_proc_start_reset));
-end
-always @(posedge m_clock or posedge p_reset)
-  begin
-if (p_reset)
      _reg_24 <= 1'b0;
 else if ((_proc_start_reset|(_reg_24|_reg_25)))
-      _reg_24 <= ((_reg_25&(~_reg_25_goto))&(~_proc_start_reset));
+      _reg_24 <= (_reg_25&(~_proc_start_reset));
 end
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      _reg_25 <= 1'b0;
-else if ((_proc_start_reset|(((_reg_24&start)&_net_33)|(_reg_25|_reg_26))))
-      _reg_25 <= ((((_reg_24&start)&_net_33)|_reg_26)&(~_proc_start_reset));
+else if ((_proc_start_reset|(((_reg_26&start)&_net_37)|(_reg_25|_reg_26))))
+      _reg_25 <= ((((_reg_26&start)&_net_37)|(_reg_26&(~_reg_26_goto)))&(~_proc_start_reset));
 end
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      _reg_26 <= 1'b0;
-else if ((_proc_start_reset|(_reg_26|_reg_27)))
-      _reg_26 <= (_reg_27&(~_proc_start_reset));
+else if ((_proc_start_reset|((((_reg_26&start)&(~_net_37))&_net_38)|(_reg_26|_reg_27))))
+      _reg_26 <= (((((_reg_26&start)&(~_net_37))&_net_38)|_reg_27)&(~_proc_start_reset));
 end
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      _reg_27 <= 1'b0;
-else if ((_proc_start_reset|(_reg_27|_reg_28)))
-      _reg_27 <= (_reg_28&(~_proc_start_reset));
+else if ((_proc_start_reset|(((_reg_29&start)&_net_42)|(_reg_27|_reg_28))))
+      _reg_27 <= ((((_reg_29&start)&_net_42)|(_reg_28&(~_reg_28_goto)))&(~_proc_start_reset));
 end
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      _reg_28 <= 1'b0;
-else if ((_proc_start_reset|(((_reg_29&start)&_net_36)|(_reg_28|_reg_29))))
-      _reg_28 <= ((((_reg_29&start)&_net_36)|(_reg_29&(~_reg_29_goto)))&(~_proc_start_reset));
+else if ((_proc_start_reset|(_reg_28|_reg_29)))
+      _reg_28 <= ((_reg_29&(~_reg_29_goto))&(~_proc_start_reset));
 end
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      _reg_29 <= 1'b0;
-else if ((_proc_start_reset|(((((_reg_29&start)&(~_net_36))&_net_37)|_reg_30)|(_reg_29|_reg_30))))
-      _reg_29 <= ((((((_reg_29&start)&(~_net_36))&_net_37)|_reg_30)|_reg_30)&(~_proc_start_reset));
+else if ((_proc_start_reset|(((_reg_28&start)&_net_39)|(_reg_29|_reg_30))))
+      _reg_29 <= ((((_reg_28&start)&_net_39)|_reg_30)&(~_proc_start_reset));
 end
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      _reg_30 <= 1'b0;
-else if (((_proc_start_set|_proc_start_reset)|_reg_30))
-      _reg_30 <= _proc_start_set;
+else if ((_proc_start_reset|(_reg_30|_reg_31)))
+      _reg_30 <= (_reg_31&(~_proc_start_reset));
+end
+always @(posedge m_clock or posedge p_reset)
+  begin
+if (p_reset)
+     _reg_31 <= 1'b0;
+else if ((_proc_start_reset|(_reg_31|_reg_32)))
+      _reg_31 <= (_reg_32&(~_proc_start_reset));
+end
+always @(posedge m_clock or posedge p_reset)
+  begin
+if (p_reset)
+     _reg_32 <= 1'b0;
+else if ((_proc_start_reset|(((_reg_33&start)&_net_43)|(_reg_32|_reg_33))))
+      _reg_32 <= ((((_reg_33&start)&_net_43)|(_reg_33&(~_reg_33_goto)))&(~_proc_start_reset));
+end
+always @(posedge m_clock or posedge p_reset)
+  begin
+if (p_reset)
+     _reg_33 <= 1'b0;
+else if ((_proc_start_reset|(((((_reg_33&start)&(~_net_43))&_net_44)|_reg_34)|(_reg_33|_reg_34))))
+      _reg_33 <= ((((((_reg_33&start)&(~_net_43))&_net_44)|_reg_34)|_reg_34)&(~_proc_start_reset));
+end
+always @(posedge m_clock or posedge p_reset)
+  begin
+if (p_reset)
+     _reg_34 <= 1'b0;
+else if (((_proc_start_set|_proc_start_reset)|_reg_34))
+      _reg_34 <= _proc_start_set;
 end
 endmodule
 
 // synthesis translate_on
 // synopsys translate_on
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Mon Mar 28 18:23:38 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Mar 30 10:51:04 2016
  Licensed to :EVALUATION USER
 */
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Mon Mar 28 18:23:38 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Mar 30 10:51:04 2016
  Licensed to :EVALUATION USER:
 */
 
