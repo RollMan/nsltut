@@ -40,7 +40,7 @@ module counter {
 module serial_r {
   //reg counter_reset = 1'b0;
   reg recieved[8] = 8'd0;
-  reg loop[4];
+  reg loop[4] = 0;
   reg receiving = 0;
   counter counter_i;
   proc_name receive();
