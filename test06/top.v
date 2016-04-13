@@ -1,9 +1,5 @@
-
-`timescale	1ns / 1ns
-`default_nettype none
-
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Mar 30 10:51:04 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Fri Apr  8 14:04:37 2016
  Licensed to :EVALUATION USER
 */
 /*
@@ -125,11 +121,11 @@ if ((((countup&_net_1)|reset)==1'b1) ||
 // synopsys translate_on
 endmodule
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Mar 30 10:51:04 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Fri Apr  8 14:04:37 2016
  Licensed to :EVALUATION USER
 */
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Mar 30 10:51:04 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Fri Apr  8 14:04:37 2016
  Licensed to :EVALUATION USER
 */
 /*
@@ -388,9 +384,11 @@ if (p_reset)
 else if (((_reg_10&receive)&_net_15))
       recieved <= ({RDX,(recieved[7:1])});
 end
-always @(posedge m_clock)
+always @(posedge m_clock or posedge p_reset)
   begin
-
+if (p_reset)
+     loop <= 4'b0000;
+else 
 // synthesis translate_off
 // synopsys translate_off
 if (((_reg_12&receive)&((_reg_10&receive)&_net_15)))   loop <= 4'bx; 
@@ -507,11 +505,11 @@ else if (((_proc_receive_set|_proc_receive_reset)|_reg_13))
 end
 endmodule
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Mar 30 10:51:04 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Fri Apr  8 14:04:37 2016
  Licensed to :EVALUATION USER
 */
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Mar 30 10:51:04 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Fri Apr  8 14:04:37 2016
  Licensed to :EVALUATION USER
 */
 
@@ -891,45 +889,6 @@ endmodule
 // synthesis translate_on
 // synopsys translate_on
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Mar 30 10:51:04 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Fri Apr  8 14:04:37 2016
  Licensed to :EVALUATION USER
 */
-/*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Mar 30 10:51:04 2016
- Licensed to :EVALUATION USER:
-*/
-
-//synthesis translate_off
-/*
- DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
-*/
-module tb;
-	parameter tCYC=2;
-	parameter tPD=(tCYC/10);
-
-	reg p_reset;
-	reg m_clock;
-
-	top top_instance(
-		.p_reset(p_reset),
-		.m_clock(m_clock)
-	);
-
-	initial forever #(tCYC/2) m_clock = ~m_clock;
-
-	initial begin
-		$dumpfile("top.vcd");
-		$dumpvars(0,top_instance);
-	end
-
-	initial begin
-		#(tPD)
-			p_reset = 1;
-			m_clock = 0;
-		#(tCYC)
-			p_reset = 0;
-	end
-
-endmodule
-
-//synthesis translate_on

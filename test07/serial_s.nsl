@@ -1,0 +1,71 @@
+#define RX_CLK 5200
+declare serial_s {
+  input start_send;
+  output TDX;
+}
+declare counter {
+  output f[13];
+  func_in countup();
+  func_in reset();
+}
+module counter {
+  reg cnt[13] = 0;
+
+  f = cnt;
+
+  function reset{
+    cnt := 0;
+  }
+
+  function countup {
+    any{
+      cnt == RX_CLK:{
+        cnt := 13'd0;
+      }
+      cnt != RX_CLK:{
+        cnt++;
+      }
+    }
+  }
+}
+
+module serial_s {
+  reg TDX_r = 1;
+  reg sending = 1'b0;
+  reg data[8];
+  reg loop[4] = 4'd0;
+  counter counter_i;
+  func_self send();
+
+  TDX = TDX_r;
+
+  if(start_send == 1){
+    if(sending == 0){
+      sending := 1;
+      data := 8'b00110100;
+      send();
+    }
+  }
+
+  func send seq{
+      _display("Sending...");
+      counter_i.reset();
+      //start bit
+      TDX_r := 0;
+
+      //data bit
+      for(loop := 0; loop < 8; loop++){
+        counter_i.reset();
+        while(counter_i.f != RX_CLK){
+          counter_i.countup();
+        }
+        TDX_r := data[loop];
+      }
+      _display("sending finish bit");
+      while(counter_i.f != RX_CLK){
+        counter_i.countup();
+      }
+      TDX_r := 1;
+      sending := 0;
+  }
+}

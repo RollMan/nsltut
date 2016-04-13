@@ -1,0 +1,13 @@
+VCD info: dumpfile testbench.vcd opened for output.
+Warning: register set hazard(serial_s:sending) at                   10
+Warning: register set hazard(serial_s:sending) at                   30
+Warning: register set hazard(serial_s:sending) at                   50
+Warning: register set hazard(serial_s:sending) at                   70
+Warning: register set hazard(serial_s:sending) at                   90
+Warning: register set hazard(serial_s:sending) at                  110
+Warning: register set hazard(serial_s:sending) at                  130
+Warning: register set hazard(serial_s:sending) at                  150
+Warning: register set hazard(serial_s:sending) at                  170
+Warning: register set hazard(serial_s:sending) at                  190
+Sending...
+sending finish bit
