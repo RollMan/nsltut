@@ -1,5 +1,5 @@
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Apr 13 10:27:51 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Sat May 14 10:23:53 2016
  Licensed to :EVALUATION USER
 */
 /*
@@ -85,11 +85,11 @@ if (((((countup&_net_1)|(countup&_net_0))|reset)==1'b1) ||
 // synopsys translate_on
 endmodule
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Apr 13 10:27:51 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Sat May 14 10:23:53 2016
  Licensed to :EVALUATION USER
 */
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Apr 13 10:27:51 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Sat May 14 10:23:53 2016
  Licensed to :EVALUATION USER
 */
 /*
@@ -126,21 +126,20 @@ module serial_s ( p_reset , m_clock , start_send , TDX );
   reg _reg_18;
   reg _reg_19;
   reg _reg_20;
-  reg _reg_21;
-  wire _net_22;
+  wire _net_21;
   wire _reg_13_goto;
   wire _reg_12_goin;
-  wire _net_23;
+  wire _net_22;
   wire _reg_13_goin;
-  wire _net_25;
+  wire _net_23;
   wire _reg_15_goto;
   wire _reg_17_goin;
-  wire _net_26;
+  wire _net_24;
   wire _reg_16_goto;
   wire _reg_15_goin;
-  wire _net_27;
+  wire _net_25;
   wire _reg_16_goin;
-  wire _net_28;
+  wire _net_26;
   wire _reg_17_goto;
   wire _reg_14_goin;
 counter counter_i (.m_clock(m_clock), .p_reset(p_reset), .reset(_counter_i_reset), .countup(_counter_i_countup), .f(_counter_i_f));
@@ -182,14 +181,14 @@ always @(posedge _counter_i_countup)
  begin
 $display("Warning: control hazard(serial_s:_counter_i_countup) at %d",$time);
  end
-#1 if ((((_reg_16&(~_net_26)))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_16&(~_net_26)) || 1'b1) line 57 at %d\n",$time);
-#1 if ((((_reg_13&(~_net_22)))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_13&(~_net_22)) || 1'b1) line 63 at %d\n",$time);
+#1 if ((((_reg_16&(~_net_24)))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_16&(~_net_24)) || 1'b1) line 56 at %d\n",$time);
+#1 if ((((_reg_13&(~_net_21)))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_13&(~_net_21)) || 1'b1) line 62 at %d\n",$time);
  end
 
 // synthesis translate_on
 // synopsys translate_on
-   assign  _counter_i_countup = (_reg_16&(~_net_26))|
-    (_reg_13&(~_net_22));
+   assign  _counter_i_countup = (_reg_16&(~_net_24))|
+    (_reg_13&(~_net_21));
 
 // synthesis translate_off
 // synopsys translate_off
@@ -199,14 +198,16 @@ always @(posedge _counter_i_reset)
  begin
 $display("Warning: control hazard(serial_s:_counter_i_reset) at %d",$time);
  end
-#1 if (((_reg_19)===1'bx) || (1'b1)===1'bx) $display("hazard (_reg_19 || 1'b1) line 52 at %d\n",$time);
-#1 if ((((_reg_17&(~_net_28)))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_17&(~_net_28)) || 1'b1) line 55 at %d\n",$time);
+#1 if (((_reg_19)===1'bx) || (1'b1)===1'bx) $display("hazard (_reg_19 || 1'b1) line 51 at %d\n",$time);
+#1 if ((((_reg_17&(~_net_26)))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_17&(~_net_26)) || 1'b1) line 54 at %d\n",$time);
+#1 if (((_reg_14)===1'bx) || (1'b1)===1'bx) $display("hazard (_reg_14 || 1'b1) line 60 at %d\n",$time);
  end
 
 // synthesis translate_on
 // synopsys translate_on
    assign  _counter_i_reset = _reg_19|
-    (_reg_17&(~_net_28));
+    (_reg_17&(~_net_26))|
+    _reg_14;
    assign  _counter_i_p_reset = p_reset;
    assign  _counter_i_m_clock = m_clock;
    assign  _net_9 = (start_send==1'b1);
@@ -223,7 +224,7 @@ $display("Warning: control hazard(serial_s:_counter_i_reset) at %d",$time);
 // synthesis translate_on
 // synopsys translate_on
 ;
-   assign  _net_22 = 
+   assign  _net_21 = 
 // synthesis translate_off
 // synopsys translate_off
 (_reg_13)? 
@@ -245,14 +246,14 @@ always @(posedge _reg_13_goto)
  begin
 $display("Warning: control hazard(serial_s:_reg_13_goto) at %d",$time);
  end
-#1 if (((((_reg_13&(~_net_22))&_net_23))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_13&(~_net_22))&_net_23) || 1'b1) line 64 at %d\n",$time);
-#1 if ((((_reg_13&_net_22))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_13&_net_22) || 1'b1) line 64 at %d\n",$time);
+#1 if (((((_reg_13&(~_net_21))&_net_22))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_13&(~_net_21))&_net_22) || 1'b1) line 63 at %d\n",$time);
+#1 if ((((_reg_13&_net_21))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_13&_net_21) || 1'b1) line 63 at %d\n",$time);
  end
 
 // synthesis translate_on
 // synopsys translate_on
-   assign  _reg_13_goto = ((_reg_13&(~_net_22))&_net_23)|
-    (_reg_13&_net_22);
+   assign  _reg_13_goto = ((_reg_13&(~_net_21))&_net_22)|
+    (_reg_13&_net_21);
 
 // synthesis translate_off
 // synopsys translate_off
@@ -262,19 +263,19 @@ always @(posedge _reg_12_goin)
  begin
 $display("Warning: control hazard(serial_s:_reg_12_goin) at %d",$time);
  end
-#1 if ((((_reg_13&_net_22))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_13&_net_22) || 1'b1) line 64 at %d\n",$time);
+#1 if ((((_reg_13&_net_21))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_13&_net_21) || 1'b1) line 63 at %d\n",$time);
  end
 
 // synthesis translate_on
 // synopsys translate_on
-   assign  _reg_12_goin = (_reg_13&_net_22);
-   assign  _net_23 = 
+   assign  _reg_12_goin = (_reg_13&_net_21);
+   assign  _net_22 = 
 // synthesis translate_off
 // synopsys translate_off
-((_reg_13&(~_net_22)))? 
+((_reg_13&(~_net_21)))? 
 // synthesis translate_on
 // synopsys translate_on
-(((_reg_13&(~_net_22)))?(_counter_i_f != 13'b1010001010000):1'b0)
+(((_reg_13&(~_net_21)))?(_counter_i_f != 13'b1010001010000):1'b0)
 // synthesis translate_off
 // synopsys translate_off
 :1'bx
@@ -290,26 +291,13 @@ always @(posedge _reg_13_goin)
  begin
 $display("Warning: control hazard(serial_s:_reg_13_goin) at %d",$time);
  end
-#1 if (((((_reg_13&(~_net_22))&_net_23))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_13&(~_net_22))&_net_23) || 1'b1) line 64 at %d\n",$time);
+#1 if (((((_reg_13&(~_net_21))&_net_22))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_13&(~_net_21))&_net_22) || 1'b1) line 63 at %d\n",$time);
  end
 
 // synthesis translate_on
 // synopsys translate_on
-   assign  _reg_13_goin = ((_reg_13&(~_net_22))&_net_23);
-
-// synthesis translate_off
-// synopsys translate_off
-always @(posedge m_clock)
-  begin
-    if(_reg_14)
-    begin
-    $display("sending finish bit");
-    end
-  end
-
-// synthesis translate_on
-// synopsys translate_on
-   assign  _net_25 = 
+   assign  _reg_13_goin = ((_reg_13&(~_net_21))&_net_22);
+   assign  _net_23 = 
 // synthesis translate_off
 // synopsys translate_off
 (_reg_15)? 
@@ -331,12 +319,12 @@ always @(posedge _reg_15_goto)
  begin
 $display("Warning: control hazard(serial_s:_reg_15_goto) at %d",$time);
  end
-#1 if ((((_reg_15&_net_25))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_15&_net_25) || 1'b1) line 60 at %d\n",$time);
+#1 if ((((_reg_15&_net_23))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_15&_net_23) || 1'b1) line 59 at %d\n",$time);
  end
 
 // synthesis translate_on
 // synopsys translate_on
-   assign  _reg_15_goto = (_reg_15&_net_25);
+   assign  _reg_15_goto = (_reg_15&_net_23);
 
 // synthesis translate_off
 // synopsys translate_off
@@ -346,13 +334,13 @@ always @(posedge _reg_17_goin)
  begin
 $display("Warning: control hazard(serial_s:_reg_17_goin) at %d",$time);
  end
-#1 if ((((_reg_15&_net_25))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_15&_net_25) || 1'b1) line 60 at %d\n",$time);
+#1 if ((((_reg_15&_net_23))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_15&_net_23) || 1'b1) line 59 at %d\n",$time);
  end
 
 // synthesis translate_on
 // synopsys translate_on
-   assign  _reg_17_goin = (_reg_15&_net_25);
-   assign  _net_26 = 
+   assign  _reg_17_goin = (_reg_15&_net_23);
+   assign  _net_24 = 
 // synthesis translate_off
 // synopsys translate_off
 (_reg_16)? 
@@ -374,14 +362,14 @@ always @(posedge _reg_16_goto)
  begin
 $display("Warning: control hazard(serial_s:_reg_16_goto) at %d",$time);
  end
-#1 if (((((_reg_16&(~_net_26))&_net_27))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_16&(~_net_26))&_net_27) || 1'b1) line 58 at %d\n",$time);
-#1 if ((((_reg_16&_net_26))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_16&_net_26) || 1'b1) line 58 at %d\n",$time);
+#1 if (((((_reg_16&(~_net_24))&_net_25))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_16&(~_net_24))&_net_25) || 1'b1) line 57 at %d\n",$time);
+#1 if ((((_reg_16&_net_24))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_16&_net_24) || 1'b1) line 57 at %d\n",$time);
  end
 
 // synthesis translate_on
 // synopsys translate_on
-   assign  _reg_16_goto = ((_reg_16&(~_net_26))&_net_27)|
-    (_reg_16&_net_26);
+   assign  _reg_16_goto = ((_reg_16&(~_net_24))&_net_25)|
+    (_reg_16&_net_24);
 
 // synthesis translate_off
 // synopsys translate_off
@@ -391,19 +379,19 @@ always @(posedge _reg_15_goin)
  begin
 $display("Warning: control hazard(serial_s:_reg_15_goin) at %d",$time);
  end
-#1 if ((((_reg_16&_net_26))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_16&_net_26) || 1'b1) line 58 at %d\n",$time);
+#1 if ((((_reg_16&_net_24))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_16&_net_24) || 1'b1) line 57 at %d\n",$time);
  end
 
 // synthesis translate_on
 // synopsys translate_on
-   assign  _reg_15_goin = (_reg_16&_net_26);
-   assign  _net_27 = 
+   assign  _reg_15_goin = (_reg_16&_net_24);
+   assign  _net_25 = 
 // synthesis translate_off
 // synopsys translate_off
-((_reg_16&(~_net_26)))? 
+((_reg_16&(~_net_24)))? 
 // synthesis translate_on
 // synopsys translate_on
-(((_reg_16&(~_net_26)))?(_counter_i_f != 13'b1010001010000):1'b0)
+(((_reg_16&(~_net_24)))?(_counter_i_f != 13'b1010001010000):1'b0)
 // synthesis translate_off
 // synopsys translate_off
 :1'bx
@@ -419,13 +407,13 @@ always @(posedge _reg_16_goin)
  begin
 $display("Warning: control hazard(serial_s:_reg_16_goin) at %d",$time);
  end
-#1 if (((((_reg_16&(~_net_26))&_net_27))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_16&(~_net_26))&_net_27) || 1'b1) line 58 at %d\n",$time);
+#1 if (((((_reg_16&(~_net_24))&_net_25))===1'bx) || (1'b1)===1'bx) $display("hazard (((_reg_16&(~_net_24))&_net_25) || 1'b1) line 57 at %d\n",$time);
  end
 
 // synthesis translate_on
 // synopsys translate_on
-   assign  _reg_16_goin = ((_reg_16&(~_net_26))&_net_27);
-   assign  _net_28 = 
+   assign  _reg_16_goin = ((_reg_16&(~_net_24))&_net_25);
+   assign  _net_26 = 
 // synthesis translate_off
 // synopsys translate_off
 (_reg_17)? 
@@ -447,12 +435,12 @@ always @(posedge _reg_17_goto)
  begin
 $display("Warning: control hazard(serial_s:_reg_17_goto) at %d",$time);
  end
-#1 if ((((_reg_17&_net_28))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_17&_net_28) || 1'b1) line 60 at %d\n",$time);
+#1 if ((((_reg_17&_net_26))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_17&_net_26) || 1'b1) line 59 at %d\n",$time);
  end
 
 // synthesis translate_on
 // synopsys translate_on
-   assign  _reg_17_goto = (_reg_17&_net_28);
+   assign  _reg_17_goto = (_reg_17&_net_26);
 
 // synthesis translate_off
 // synopsys translate_off
@@ -462,25 +450,12 @@ always @(posedge _reg_14_goin)
  begin
 $display("Warning: control hazard(serial_s:_reg_14_goin) at %d",$time);
  end
-#1 if ((((_reg_17&_net_28))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_17&_net_28) || 1'b1) line 60 at %d\n",$time);
+#1 if ((((_reg_17&_net_26))===1'bx) || (1'b1)===1'bx) $display("hazard ((_reg_17&_net_26) || 1'b1) line 59 at %d\n",$time);
  end
 
 // synthesis translate_on
 // synopsys translate_on
-   assign  _reg_14_goin = (_reg_17&_net_28);
-
-// synthesis translate_off
-// synopsys translate_off
-always @(posedge m_clock)
-  begin
-    if((send|_reg_21))
-    begin
-    $display("Sending...");
-    end
-  end
-
-// synthesis translate_on
-// synopsys translate_on
+   assign  _reg_14_goin = (_reg_17&_net_26);
    assign  TDX = TDX_r;
 always @(posedge m_clock or posedge p_reset)
   begin
@@ -524,11 +499,11 @@ if (p_reset)
 else 
 // synthesis translate_off
 // synopsys translate_off
-if ((_reg_20&_reg_11))   sending <= 1'bx; 
+if (((send|_reg_20)&_reg_11))   sending <= 1'bx; 
   else 
 // synthesis translate_on
 // synopsys translate_on
-if (_reg_20)
+if ((send|_reg_20))
       sending <= 1'b1;
 else if (_reg_11)
       sending <= 1'b0;
@@ -538,9 +513,9 @@ end
 // synopsys translate_off
 always @(posedge m_clock)
   begin
-if (((_reg_20|_reg_11)==1'b1) ||
- ((_reg_20|_reg_11)==1'b0) ) begin
- if ((_reg_20&_reg_11))
+if ((((send|_reg_20)|_reg_11)==1'b1) ||
+ (((send|_reg_20)|_reg_11)==1'b0) ) begin
+ if (((send|_reg_20)&_reg_11))
  begin $display("Warning: assign collision(serial_s:sending) at %d",$time);
 
   end
@@ -603,43 +578,43 @@ always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      _reg_12 <= 1'b0;
-else if (((_reg_13&_net_22)|(_reg_12|_reg_13)))
-      _reg_12 <= ((_reg_13&_net_22)|(_reg_13&(~_reg_13_goto)));
+else if (((_reg_13&_net_21)|(_reg_12|_reg_13)))
+      _reg_12 <= ((_reg_13&_net_21)|(_reg_13&(~_reg_13_goto)));
 end
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      _reg_13 <= 1'b0;
-else if ((((_reg_13&(~_net_22))&_net_23)|(_reg_13|_reg_14)))
-      _reg_13 <= (((_reg_13&(~_net_22))&_net_23)|_reg_14);
+else if ((((_reg_13&(~_net_21))&_net_22)|(_reg_13|_reg_14)))
+      _reg_13 <= (((_reg_13&(~_net_21))&_net_22)|_reg_14);
 end
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      _reg_14 <= 1'b0;
-else if (((_reg_17&_net_28)|(_reg_14|_reg_15)))
-      _reg_14 <= ((_reg_17&_net_28)|(_reg_15&(~_reg_15_goto)));
+else if (((_reg_17&_net_26)|(_reg_14|_reg_15)))
+      _reg_14 <= ((_reg_17&_net_26)|(_reg_15&(~_reg_15_goto)));
 end
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      _reg_15 <= 1'b0;
-else if (((_reg_16&_net_26)|(_reg_15|_reg_16)))
-      _reg_15 <= ((_reg_16&_net_26)|(_reg_16&(~_reg_16_goto)));
+else if (((_reg_16&_net_24)|(_reg_15|_reg_16)))
+      _reg_15 <= ((_reg_16&_net_24)|(_reg_16&(~_reg_16_goto)));
 end
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      _reg_16 <= 1'b0;
-else if ((((_reg_16&(~_net_26))&_net_27)|(_reg_16|_reg_17)))
-      _reg_16 <= (((_reg_16&(~_net_26))&_net_27)|(_reg_17&(~_reg_17_goto)));
+else if ((((_reg_16&(~_net_24))&_net_25)|(_reg_16|_reg_17)))
+      _reg_16 <= (((_reg_16&(~_net_24))&_net_25)|(_reg_17&(~_reg_17_goto)));
 end
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      _reg_17 <= 1'b0;
-else if (((_reg_15&_net_25)|(_reg_17|_reg_18)))
-      _reg_17 <= ((_reg_15&_net_25)|_reg_18);
+else if (((_reg_15&_net_23)|(_reg_17|_reg_18)))
+      _reg_17 <= ((_reg_15&_net_23)|_reg_18);
 end
 always @(posedge m_clock or posedge p_reset)
   begin
@@ -652,25 +627,18 @@ always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      _reg_19 <= 1'b0;
-else if ((_reg_19|_reg_20))
-      _reg_19 <= _reg_20;
+else if ((send|(_reg_19|_reg_20)))
+      _reg_19 <= (_reg_20|send);
 end
 always @(posedge m_clock or posedge p_reset)
   begin
 if (p_reset)
      _reg_20 <= 1'b0;
-else if ((send|(_reg_20|_reg_21)))
-      _reg_20 <= (_reg_21|send);
-end
-always @(posedge m_clock or posedge p_reset)
-  begin
-if (p_reset)
-     _reg_21 <= 1'b0;
-else if (_reg_21)
-      _reg_21 <= 1'b0;
+else if (_reg_20)
+      _reg_20 <= 1'b0;
 end
 endmodule
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Wed Apr 13 10:27:51 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Sat May 14 10:23:53 2016
  Licensed to :EVALUATION USER
 */

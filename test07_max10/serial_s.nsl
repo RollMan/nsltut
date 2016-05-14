@@ -47,7 +47,6 @@ module serial_s {
   }
 
   func send seq{
-      _display("Sending...");
       sending := 1;
       counter_i.reset();
       //data bit ( including start bit)
@@ -58,7 +57,7 @@ module serial_s {
         }
         TDX_r := data[loop];
       }
-      _display("sending finish bit");
+      counter_i.reset();
       while(counter_i.f != RX_CLK){
         counter_i.countup();
       }
