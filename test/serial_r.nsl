@@ -1,0 +1,32 @@
+/*
+  9600bps
+*/
+
+#define RX_CLK 650
+#define STBIT_DELAY 3
+#define DATBIT_DElAY 8
+declare serial_r {
+  input RDX;
+  output DATA[8];
+
+  func_in recieve();
+}
+
+module serial_r {
+  //reg counter_reset = 1'b0;
+  reg data[8] = 8'd0;
+  reg len_of_startbit[3] = 0;
+  reg cntclk[10] = 10'd0;
+  proc_name start(len_of_startbit);      //SEND A START BIT
+
+  func recieve{
+    len_of_startbit := 0;
+    start(len_of_startbit);
+  }
+
+  proc start{
+len_of_startbit := 3'd1;
+cntclk := 10'd3;
+    finish;
+  }
+}

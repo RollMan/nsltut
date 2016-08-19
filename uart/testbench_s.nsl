@@ -1,0 +1,21 @@
+#include "serial_s.nsl"
+
+declare testbench_s simulation {
+}
+
+module testbench_s {
+  reg cnt[16] = 0;
+  serial_s sender;
+  if(cnt < 100){
+    cnt++;
+  }
+  if(cnt == 100){
+    cnt++;
+    sender.launch(8'b11001000);
+  }
+  if(cnt > 100){
+  }
+  func sender.complete{
+    _finish("Finished");
+  }
+}

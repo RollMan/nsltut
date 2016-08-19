@@ -1,89 +1,61 @@
+/*
+  9600bps
+*/
+
 #define RX_CLK 650
-#define STBIT_DELAY 3
-#define DATBIT_DElAY 8
+#define STBIT_DELAY  1950 //650 * 3
+#define DATBIT_DELAY 5200 //650 * 8
 declare serial_r {
   input RDX;
-  output LEDR[8];
-}
+  output DATA[8];
 
-declare counter {
-  //input reset;
-  output f[16];
-  func_in countup();
-  func_in reset();
-}
-module counter {
-  reg cnt[32] = 0;
-  reg f_r[16] = 0;
-
-  f = f_r;
-
-  //if(~reset){
-  function reset{
-    cnt := 0;
-    f_r := 0;
-  }
-
-  function countup {
-    any{
-      cnt == RX_CLK:{
-        cnt := 32'd0;
-        f_r++;
-      }
-      cnt != RX_CLK:{
-        cnt++;
-      }
-    }
-  }
+  func_in launch();
+  func_out complete(DATA);
 }
 
 module serial_r {
   //reg counter_reset = 1'b0;
-  reg recieved[8] = 8'd0;
-  reg loop[4] = 0;
-  reg receiving = 0;
-  counter counter_i;
-  proc_name receive();
+  reg data[8] = 8'd0;
+  reg received_bit[4] = 0;
+  reg cnt[16] = 16'd0;
+  proc_name start();      //SEND A START BIT
+  proc_name receive();    //RECEIVE DATA
 
-  //counter_i.reset = counter_reset;
-  LEDR = recieved;
-
-  if(receiving == 0){
-  any{
-    RDX == 0:{
-      //count 3(STBIT_DELAY) clocks (multipled 8 and baud rate) to ignore noise
-      //counter_reset := 1'b1;
-      counter_i.countup();
-      if(counter_i.f == STBIT_DELAY){
-        receiving := 1;
-        receive();
-      }
-    }
-    RDX != 0:{
-      //counter_reset := 1'b0;
-      counter_i.reset();
+  func launch{
+    if(!start && !receive){
+      start();
     }
   }
-  }
 
-  proc receive seq{
-    //for(loop := 0; loop < 4'd8; ;){
-    //counter_reset := 1'b0;
-    counter_i.reset();
-    loop := 0;
-    while(loop < 4'd8){
-      //wait 8(DATBIT_DELAY) clocks (multipled 8 and baud rate) to catche the middle of pulse
-      //counter_reset := 1'b1;
-      counter_i.countup();
-      if(counter_i.f == DATBIT_DElAY){
-        loop++;
-        //recieved := (recieved << 1) | {7'd0, RDX};
-        recieved := {RDX, recieved[7:1]};
-        //counter_reset := 1'b0;
-        counter_i.reset();
+  proc start{
+    if(RDX == 0){
+      any{
+        cnt == STBIT_DELAY : {
+          cnt := 0;
+          receive();
+        }
+        cnt != STBIT_DELAY : cnt++;
       }
     }
-    receiving := 0;
-    finish();
+    if(RDX == 1){
+      cnt := 0;
+    }
+  }
+
+  proc receive{
+    any{
+      cnt == DATBIT_DELAY : {
+        cnt := 0;
+        received_bit++;
+        data := {data[6:0], RDX};
+        if(received_bit == 8){
+          complete(data);
+          finish;
+        }
+      }
+      cnt != DATBIT_DELAY : {
+        cnt++;
+      }
+    }
   }
 }
