@@ -1,11 +1,11 @@
 #include "serial_s.nsl"
 #include "serial_r.nsl"
-declare testbench_r simulation{
+declare top simulation{
   input RDX;
   output TDX;
 }
 
-module testbench_r {
+module top {
   serial_s sender;
   serial_r receiver;
 

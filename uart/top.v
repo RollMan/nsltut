@@ -1,5 +1,5 @@
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Sep 22 16:41:30 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Sep 22 16:53:06 2016
  Licensed to :EVALUATION USER
 */
 /*
@@ -408,11 +408,11 @@ else if ((_proc_endbit_set|_proc_endbit_reset))
 end
 endmodule
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Sep 22 16:41:30 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Sep 22 16:53:06 2016
  Licensed to :EVALUATION USER
 */
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Sep 22 16:41:30 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Sep 22 16:53:06 2016
  Licensed to :EVALUATION USER
 */
 /*
@@ -711,11 +711,11 @@ else if ((_proc_receive_set|_proc_receive_reset))
 end
 endmodule
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Sep 22 16:41:30 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Sep 22 16:53:06 2016
  Licensed to :EVALUATION USER
 */
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Sep 22 16:41:30 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Sep 22 16:53:06 2016
  Licensed to :EVALUATION USER
 */
 
@@ -725,7 +725,7 @@ endmodule
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
 */
 
-module testbench_r ( p_reset , m_clock , RDX , TDX );
+module top ( p_reset , m_clock , RDX , TDX );
   input p_reset, m_clock;
   wire p_reset, m_clock;
   input RDX;
@@ -752,7 +752,7 @@ always @(posedge _sender_launch)
   begin
 #1 if (_sender_launch===1'bx)
  begin
-$display("Warning: control hazard(testbench_r:_sender_launch) at %d",$time);
+$display("Warning: control hazard(top:_sender_launch) at %d",$time);
  end
 #1 if (((_receiver_complete)===1'bx) || (1'b1)===1'bx) $display("hazard (_receiver_complete || 1'b1) line 18 at %d\n",$time);
  end
@@ -764,7 +764,7 @@ always @(posedge _receiver_launch)
   begin
 #1 if (_receiver_launch===1'bx)
  begin
-$display("Warning: control hazard(testbench_r:_receiver_launch) at %d",$time);
+$display("Warning: control hazard(top:_receiver_launch) at %d",$time);
  end
 #1 if (((1'b1)===1'bx) || (1'b1)===1'bx) $display("hazard (1'b1 || 1'b1) line 15 at %d\n",$time);
  end
@@ -777,6 +777,6 @@ endmodule
 // synthesis translate_on
 // synopsys translate_on
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Sep 22 16:41:30 2016
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Sep 22 16:53:06 2016
  Licensed to :EVALUATION USER
 */
