@@ -1,0 +1,22 @@
+#include "serial_s.nsl"
+#include "serial_r.nsl"
+declare testbench_r simulation{
+}
+
+module testbench_r {
+  serial_s sender;
+  serial_r receiver;
+
+  reg cnt[16] = 16'h0;
+  
+  receiver.RDX = sender.TDX;
+  receiver.launch();
+
+  if(cnt < 10) cnt++;
+  if(cnt == 10) sender.launch(8'b00010001);
+  if(cnt > 10);
+
+  func receiver.complete{
+    _finish("RECEIVED : 0x%x, 0d%d", receiver.DATA, receiver.DATA);
+  }
+}

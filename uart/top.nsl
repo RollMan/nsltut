@@ -1,0 +1,22 @@
+#include "serial_s.nsl"
+#include "serial_r.nsl"
+declare testbench_r simulation{
+  input RDX;
+  output TDX;
+}
+
+module testbench_r {
+  serial_s sender;
+  serial_r receiver;
+
+  
+  receiver.RDX = RDX;
+  TDX = sender.TDX;
+  receiver.launch();
+
+  func receiver.complete{
+    sender.launch(receiver.DATA);
+  }
+  func sender.complete{
+  }
+}

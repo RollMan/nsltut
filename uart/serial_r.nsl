@@ -47,7 +47,7 @@ module serial_r {
       cnt == DATBIT_DELAY : {
         cnt := 0;
         received_bit++;
-        data := {data[6:0], RDX};
+        data := {RDX, data[7:1]};
         if(received_bit == 8){
           complete(data);
           finish;
